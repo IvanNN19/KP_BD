@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres-container
+    restart: always
+    environment:
+      POSTGRES_USER: mai_user            # Имя пользователя
+      POSTGRES_PASSWORD: 12345          # Пароль пользователя
+      POSTGRES_DB: mydb   # Имя базы данных
+    ports:
+      - "5452:5432"                     # Проброс порта
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+    driver: local
